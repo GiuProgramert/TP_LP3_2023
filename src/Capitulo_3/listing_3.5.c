@@ -28,7 +28,7 @@ int main ()
     // Esperar 20 segundos (se usa time en vez de sleep ya que sleep se cancela despues de la primera llamada kill)
     while(1) {
         tiempo2 = time(&tiempo2);   // Tomar el tiempo actual en segundos
-        if(tiempo1 + 20 < tiempo2) {    // si pasaron 10 segundos salir del ciclo
+        if(tiempo1 + 20 < tiempo2) {    // si pasaron 20 segundos salir del ciclo
             break;
         }
     }
