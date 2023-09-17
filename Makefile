@@ -23,12 +23,8 @@ EXECS = $(BASENAMES:.c=)
 .PHONY: all clean
 
 listing_1%:
-	$(eval listing = $(@))
-	$(eval dir = $(shell find src -type f -name $(listing).c))
-	$(eval parent_dir = $(shell dirname $(dir)))
-	$(eval new_dir = $(BUILD_DIR)/$(parent_dir))
-	mkdir -p $(new_dir)
-	$(CC) $(CFLAGS) $(dir) "src/Capitulo_1/listing_1.2.cpp" "src/Capitulo_1/listing_1.3.hpp" -o "$(new_dir)/$@"
+	mkdir -p build/Capitulo_1/
+	$(CC) $(CFLAGS) "src/Capitulo_1/listing_1.1.c" "src/Capitulo_1/listing_1.2.cpp" "src/Capitulo_1/listing_1.3.hpp" -o "build/Capitulo_1/listing_1.1"
 
 listing_2%:
 	$(eval listing = $(@))
