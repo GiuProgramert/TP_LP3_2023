@@ -23,8 +23,8 @@ EXECS = $(BASENAMES:.c=)
 .PHONY: all clean
 
 listing_1%:
-	mkdir -p build/Capitulo_1/
-	$(CC) $(CFLAGS) "src/Capitulo_1/listing_1.1.c" "src/Capitulo_1/listing_1.2.cpp" "src/Capitulo_1/listing_1.3.hpp" -o "build/Capitulo_1/listing_1.1"
+	mkdir -p build/src/Capitulo_1/
+	$(CC) $(CFLAGS) "src/Capitulo_1/listing_1.1.c" "src/Capitulo_1/listing_1.2.cpp" "src/Capitulo_1/listing_1.3.hpp" -o "build/src/Capitulo_1/listing_1.1"
 
 listing_2%:
 	$(eval listing = $(@))
