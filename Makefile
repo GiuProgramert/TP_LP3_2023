@@ -22,7 +22,31 @@ EXECS = $(BASENAMES:.c=)
 # Build targets
 .PHONY: all clean
 
-listing%:
+listing_1%:
+	$(eval listing = $(@))
+	$(eval dir = $(shell find src -type f -name $(listing).c))
+	$(eval parent_dir = $(shell dirname $(dir)))
+	$(eval new_dir = $(BUILD_DIR)/$(parent_dir))
+	mkdir -p $(new_dir)
+	$(CC) $(CFLAGS) $(dir) "src/Capitulo_1/listing_1.2.cpp" "src/Capitulo_1/listing_1.3.hpp" -o "$(new_dir)/$@"
+
+listing_2%:
+	$(eval listing = $(@))
+	$(eval dir = $(shell find src -type f -name $(listing).c))
+	$(eval parent_dir = $(shell dirname $(dir)))
+	$(eval new_dir = $(BUILD_DIR)/$(parent_dir))
+	mkdir -p $(new_dir)
+	$(CC) $(CFLAGS) $(dir) -o "$(new_dir)/$@"
+
+listing_3%:
+	$(eval listing = $(@))
+	$(eval dir = $(shell find src -type f -name $(listing).c))
+	$(eval parent_dir = $(shell dirname $(dir)))
+	$(eval new_dir = $(BUILD_DIR)/$(parent_dir))
+	mkdir -p $(new_dir)
+	$(CC) $(CFLAGS) $(dir) -o "$(new_dir)/$@"
+
+listing_4%:
 	$(eval listing = $(@))
 	$(eval dir = $(shell find src -type f -name $(listing).c))
 	$(eval parent_dir = $(shell dirname $(dir)))
