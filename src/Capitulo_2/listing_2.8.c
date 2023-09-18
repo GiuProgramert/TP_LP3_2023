@@ -1,11 +1,13 @@
 #include <stdio.h>
-int f ()
+#include <stdlib.h>
+int f()
 {
-return 3;
-} 
+    return 3;
+}
 
-int main ()
+int main()
 
 {
-return f ();
+    printf("%d\n",f());
+    return 0;
 }
