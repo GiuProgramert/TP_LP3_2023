@@ -50,7 +50,12 @@ listing_4%:
 	mkdir -p $(new_dir)
 	$(CC) $(CFLAGS) $(dir) -o "$(new_dir)/$@"
 
-$(eval DIRS := $(shell find src -type f -name 'listing*' -exec basename {} \;))
+listing_4_9:
+	g++ $(CFLAGS) "src/Capitulo_4/listing_4_9.cpp" -o "build/src/Capitulo_4/listing_4_9"
+
+SOURCES := $(shell find src -type f -name 'listing*')
+
+DIRS := $(patsubst %.c,%,$(patsubst %.cpp,%,$(patsubst %.hpp,%,$(notdir $(SOURCES)))))
 
 all: $(DIRS)
 	@for file in $^; do \
