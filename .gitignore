@@ -3,3 +3,5 @@
 replit.nix
 
 .vscode/
+
+build/
