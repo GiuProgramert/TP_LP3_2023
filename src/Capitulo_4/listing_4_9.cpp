@@ -1,4 +1,12 @@
+#include <cstdio>
+#include <iostream>
 #include <pthread.h>
+#include <unistd.h>
+
+extern bool should_exit_thread_immediately() { 
+  return true;
+};
+
 class ThreadExitException {
 public:
   /* Create an exception-signaling thread exit with RETURN_VALUE. */
@@ -13,6 +21,7 @@ private:
    */
   void *thread_return_value_;
 };
+
 void do_some_work() {
   while (1) {
     /* Do some useful things here... */
@@ -20,6 +29,7 @@ void do_some_work() {
       throw ThreadExitException(/* thread's return value = */ NULL);
   }
 }
+
 void *thread_function(void *) {
   try {
     do_some_work();
@@ -27,4 +37,14 @@ void *thread_function(void *) {
     /* Some function indicated that we should exit the thread. */
     ex.DoThreadExit();
   }
-  ret
+  return NULL;
+}
+
+int main()
+{
+	pthread_t thread;
+	pthread_create(&thread, NULL, &thread_function, NULL);
+	pthread_join(thread, NULL);
+
+  return 0;
+}

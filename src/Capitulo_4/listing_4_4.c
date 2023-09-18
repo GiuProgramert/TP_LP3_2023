@@ -1,5 +1,6 @@
 #include <pthread.h>
 #include <stdio.h>
+
 /* Compute successive prime numbers (very inefficiently). Return the
  Nth prime number, where N is the value pointed to by *ARG. */
 void *compute_prime(void *arg) {
@@ -25,17 +26,33 @@ void *compute_prime(void *arg) {
   }
   return NULL;
 }
+
+int fibo(int n) {
+  if (n == 1 || n == 0) {
+    return n;
+  }
+
+  return fibo(n - 2) + fibo(n - 1);
+}
+
 int main() {
   pthread_t thread;
   int which_prime = 5000;
   int prime;
+
   /* Start the computing thread, up to the 5,000th prime number. */
   pthread_create(&thread, NULL, &compute_prime, &which_prime);
   /* Do some other work here... */
+
+  int fibo_10 = fibo(10);
+  printf("Other process work fibonacci of 10 calculation is %d\n", fibo_10);
+  
   /* Wait for the prime number thread to complete, and get the
- result. */
+  result. */
   pthread_join(thread, (void *)&prime);
+  
   /* Print the largest prime it computed. */
   printf("The %dth prime number is %d.\n", which_prime, prime);
+  
   return 0;
 }

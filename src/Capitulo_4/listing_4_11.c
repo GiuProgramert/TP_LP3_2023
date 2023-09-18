@@ -1,10 +1,13 @@
 #include <malloc.h>
 #include <pthread.h>
+
 struct job {
   /* Link field for linked list. */
   struct job *next;
   /* Other fields describing work to be done... */
+  int number;
 };
+
 /* A linked list of pending jobs. */
 struct job *job_queue;
 /* A mutex protecting job_queue. */

@@ -44,7 +44,7 @@ listing_3%:
 
 listing_4%:
 	$(eval listing = $(@))
-	$(eval dir = $(shell find src -type f -name $(listing).c))
+	$(eval dir = $(shell find src -type f -name $(listing).*))
 	$(eval parent_dir = $(shell dirname $(dir)))
 	$(eval new_dir = $(BUILD_DIR)/$(parent_dir))
 	mkdir -p $(new_dir)
