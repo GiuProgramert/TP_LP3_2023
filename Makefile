@@ -4,7 +4,7 @@
 CC = gcc
 
 # Flags for the compiler (optional)
-CFLAGS = -Wall -g -ltiff -lpthread
+CFLAGS = -Wall -g 
 
 # Source directory
 SRC_DIR = src
@@ -50,9 +50,12 @@ listing_4%:
 	mkdir -p $(new_dir)
 	$(CC) $(CFLAGS) $(dir) -o "$(new_dir)/$@"
 
-all: $(SRCS)
-	mkdir -p $(BUILD_DIR)/all
-	$(CC) $(CFLAGS) $(SRCS) -o "$(BUILD_DIR)"
+$(eval DIRS := $(shell find src -type f -name 'listing*' -exec basename {} \;))
+
+all: $(DIRS)
+	@for file in $^; do \
+		$(MAKE) "$$file"; \
+	done
 
 clean:
 	rm -rf $(BUILD_DIR)
