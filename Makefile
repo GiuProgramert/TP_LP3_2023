@@ -4,7 +4,7 @@
 CC = gcc
 
 # Flags for the compiler (optional)
-CFLAGS = -Wall -g 
+CFLAGS = -Wall -g
 
 # Source directory
 SRC_DIR = src
@@ -33,6 +33,10 @@ listing_2%:
 	$(eval new_dir = $(BUILD_DIR)/$(parent_dir))
 	mkdir -p $(new_dir)
 	$(CC) $(dir) -o "$(new_dir)/$@" $(CFLAGS)
+
+listing_2.9:
+	mkdir -p build/src/Capitulo_2/
+	$(CC) "src/Capitulo_2/listing_2.9.c" -o "build/src/Capitulo_2/listing_2.9" $(CFLAGS) -ltiff
 
 listing_3%:
 	$(eval listing = $(@))
