@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <unistd.h>
+
 void *thread_function(void *arg) {
   fprintf(stderr, "child thread pid is %d\n", (int)getpid());
   /* Spin forever. */
@@ -8,6 +9,7 @@ void *thread_function(void *arg) {
     ;
   return NULL;
 }
+
 int main() {
   pthread_t thread;
   fprintf(stderr, "main thread pid is %d\n", (int)getpid());
