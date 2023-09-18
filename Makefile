@@ -1,25 +1,18 @@
-# This Makefile compiles individual C files and places executables in a build directory
+# Makefile para compilar los listings de los 4 capitulos
 
-# Compiler to use
 CC = gcc
 
-# Flags for the compiler (optional)
 CFLAGS = -Wall -g
 
-# Source directory
 SRC_DIR = src
 
-# Build directory
 BUILD_DIR = build
 
-# List of source files
 SRCS := $(shell find src -type f -name 'listing_*.*')
 
-# List of source file basenames
 BASENAMES = $(notdir $(SRCS))
 EXECS = $(BASENAMES:.c=)
 
-# Build targets
 .PHONY: all clean
 
 listing_1%:
