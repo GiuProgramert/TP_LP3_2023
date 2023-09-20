@@ -25,6 +25,13 @@ private:
 void do_some_work() {
   while (1) {
     /* Do some useful things here... */
+    printf("Empezando trabajo hilo\n");
+    int k = 0;
+    for (int i = 0; i < 100; i++) {
+      k += (i * i * i) + i;
+    }
+    printf("Terminando trabajo hijo\n");
+    
     if (should_exit_thread_immediately())
       throw ThreadExitException(/* thread's return value = */ NULL);
   }

@@ -29,7 +29,13 @@ void *thread_function(void *args) {
   pthread_setspecific(thread_log_key, thread_log);
   write_to_thread_log("Thread starting.");
 
-  /* Do work here... */
+  printf("Empezando trabajo hilo\n");
+  int k = 0;
+  for (int i = 0; i < 100; i++) {
+    k += (i * i * i) + i;
+  }
+  printf("Terminando trabajo hijo\n");
+
   return NULL;
 }
 
